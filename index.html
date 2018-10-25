@@ -6,6 +6,7 @@
 
   <meta name="description" content="Basic Incremental">
   <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/index.css">
 
 </head>
@@ -14,7 +15,19 @@
   <div id="container">
     <div class="heading">
       <h1>Incremental Game</h1>
-      <h2>$ <span id="total-money">0</span></h2>
+      <div>
+        <h2>$ <span id="total-money">0</span></h2>
+        <div id="MultiButtons">
+          <label>Buy Multiple:</label>
+          <ul id="buyMulti">
+
+            <li id="active"><a>1</a></li>
+            <li><a>10</a></li>
+            <li><a>50</a></li>
+            <li><a>100</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div id="game-container">
       <div id="lemonade" class="business">
@@ -26,7 +39,7 @@
             <li><span class="time">5</span>  seconds</li>
           </ul>
           <p>Cost: $<span class="cost">20</span></p>
-          <button class="lemonade">Buy</button>
+          <button class="lemonade">BUY</button>
       </div>
       <div id="slushie" class="business">
         <h3>Slushie Stand</h3>
@@ -37,7 +50,7 @@
           <li><span class="time">8</span>  seconds</li>
         </ul>        
         <p>Cost: $<span class="cost">400</span></p>
-        <button class="slushie">Buy</button>
+        <button class="slushie">BUY</button>
       </div>
       <div id="coffee" class="business">
         <h3>Coffee Stand</h3>
@@ -48,7 +61,7 @@
           <li><span class="time">12</span>  seconds</li>
         </ul>
         <p>Cost: $<span class="cost">8000</span></p>
-        <button class="coffee">Buy</button>
+        <button class="coffee">BUY</button>
       </div>
     </div>
   </div>

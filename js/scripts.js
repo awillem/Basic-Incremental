@@ -1,6 +1,8 @@
 const games = document.getElementById('game-container');
 
 const gameDiv = games.children;
+const buyMulti = document.getElementById('MultiButtons');
+const buyMultiList = document.getElementById('buyMulti');
 
 const lemonadeDiv = gameDiv[0];
 const slushieDiv = gameDiv[1];
@@ -28,6 +30,23 @@ games.addEventListener('click', e => {
         }        
     }
 });
+
+buyMulti.addEventListener('click', e => {
+    const multiButtons = buyMultiList.children;
+    console.log(multiButtons);
+    for (let i = 0; i < multiButtons.length; i++) {
+        multiButtons[i].id = "";
+    }
+    if(e.target.tagName === 'LI') {
+        console.log("stuff");
+        e.target.id = "active";
+    } else if (e.target.tagName === 'A') {
+        console.log(e.target.parentElement);
+        e.target.parentElement.id = "active";
+    }
+});
+
+
 
 
 
@@ -101,9 +120,8 @@ function incrementBus () {
     lemonade.increment();
     slushie.increment();
     coffee.increment();
-    updateScreen();
 }
 
 // window.setInterval(lemonade.increment, 1000);
 window.setInterval(incrementBus,1000);
-
+window.setInterval(updateScreen, 1);
