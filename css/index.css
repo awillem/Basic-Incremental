@@ -94,6 +94,10 @@ li a {
     border-radius: 4px;
 }
 
+.not-active {
+    background: #333;
+}
+
 h3 {
     text-align: center;
 }

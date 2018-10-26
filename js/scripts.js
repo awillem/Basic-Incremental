@@ -5,7 +5,7 @@ const buyMulti = document.getElementById('MultiButtons');
 const buyMultiList = document.getElementById('buyMulti');
 const multiButtons = buyMultiList.children;
 let activeMulti = 1;
-
+const buttons = document.getElementsByTagName('button');
 const lemonadeDiv = gameDiv[0];
 const slushieDiv = gameDiv[1];
 const coffeeDiv = gameDiv[2];
@@ -21,7 +21,6 @@ totalCash.innerText = cash;
 
 
 games.addEventListener('click', function (e) {
-    console.log(activeMulti);
     if (e.target.tagName === 'BUTTON') {
         const bus = e.target.className;
         if (bus === "lemonade") {
@@ -50,7 +49,6 @@ buyMulti.addEventListener('click', e => {
         activeMulti = parseInt(e.target.innerText);   
         changeCosts(activeMulti);     
     }
-    console.log(activeMulti);
 });
 
 
@@ -124,6 +122,34 @@ function changeCosts (multi) {
     coffee.changeCost(multi);
 }
 
+function buyButton () {
+    for (let i = 0; i < gameDiv.length; i++) {
+        let bus = gameDiv[i].id;
+        buttons[i].className = "";
+        
+        if (bus === "lemonade") {   
+            if (lemonade.costCurrent < cash) {
+                buttons[0].className = "lemonade";
+            } else {
+                buttons[0].className = "lemonade not-active";
+            }
+        } else if (bus === "slushie") {
+            if (slushie.costCurrent < cash) {
+                buttons[1].className = "slushie";
+            } else {
+                buttons[1].className = "slushie not-active";
+            }
+        } else if (bus === "coffee") {
+            if (coffee.costCurrent < cash) {
+                buttons[2].className = "coffee";
+            } else {
+                buttons[2].className = "coffee not-active";
+            }
+        } 
+    }
+}
+buyButton();
+
 function updateScreen () {
 
     time[lemonade.id].innerText = lemonade.countTime;
@@ -135,6 +161,8 @@ function updateScreen () {
     cost[lemonade.id].innerText = lemonade.costCurrent;
     cost[slushie.id].innerText = slushie.costCurrent;
     cost[coffee.id].innerText = coffee.costCurrent;
+    
+buyButton();
     
 }
 
